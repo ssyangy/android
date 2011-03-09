@@ -1,0 +1,38 @@
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:id="@+id/headhome" 
+	   >
+		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:background="@drawable/header">
+		 <Button
+		    android:layout_marginLeft="5dip"
+		    android:layout_marginTop="5dip"
+		    android:layout_marginBottom="5dip"
+			android:id="@+id/newblog"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/title_new_normal"
+			android:layout_alignParentLeft="true"
+			/>
+		<TextView android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/username"
+			android:gravity="center" android:textSize="20px"
+			android:text="12345" 
+			 android:layout_centerInParent="true"
+
+			/>
+			 <Button
+			android:layout_marginTop="5dip"
+			android:layout_marginBottom="5dip"
+			android:layout_marginRight="5dip"
+		    android:layout_alignParentRight="true"
+			android:id="@+id/homerefresh"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/title_reload_normal"
+			/>
+		</RelativeLayout>
+	</RelativeLayout>

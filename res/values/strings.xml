@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, LoadingActivity!</string>
+    <string name="app_name">q-android</string>
+    <string name="tvPwd">密 码</string>
+    <string name="btnLogin">登录</string>
+    <string name="btnReg">注册</string><string name="tvUid">帐号</string>
+    <string name="cbRemember">记住我</string>
+    <string name="home">首页</string>
+    <string name="information">信息</string>
+    <string name="me">我的资料</string>
+    <string name="search">搜索</string>
+    <string name="more">更多</string>
+    
+</resources>
