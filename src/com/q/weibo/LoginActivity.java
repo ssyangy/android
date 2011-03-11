@@ -38,7 +38,7 @@ public class LoginActivity extends Activity{
 			public void handleMessage(Message msg){
 				if(msg.what==0){
 					pd.dismiss();
-					displayToast("ÓÃ»§Ãû»òÕßÃÜÂë²»ÄÜÎª¿Õ");
+					displayToast("ç”¨æˆ·åæˆ–è€…å¯†ç ä¸èƒ½ä¸ºç©º");
 				}
 				else if(msg.what==1){
 					 if(store.getCurrentUser()!=null){
@@ -62,11 +62,11 @@ public class LoginActivity extends Activity{
 				}
 				else if(msg.what==2){
 					pd.dismiss();
-					displayToast("ÓÃ»§Ãû»òÕßÃÜÂë´íÎó");
+					displayToast("ç”¨æˆ·åæˆ–è€…å¯†ç é”™è¯¯");
 				}
 				else if(msg.what==3){
 					pd.dismiss();
-					displayToast("Çë¼ì²éÍøÂçÁ¬½Ó");
+					displayToast("è¯·æ£€æŸ¥ç½‘ç»œè¿æ¥");
 				}
 			}
 		};
@@ -79,7 +79,7 @@ public class LoginActivity extends Activity{
 				@Override
 				public void onClick(View v) {
 					btnLgn.setBackgroundResource(R.drawable.regist_weibo_s);
-					//pd = ProgressDialog.show(LoginActivity.this, "ÇëÉÔºò", "ÕıÔÚÁ¬½Ó·şÎñÆ÷...", true, true);
+					//pd = ProgressDialog.show(LoginActivity.this, "è¯·ç¨å€™", "æ­£åœ¨è¿æ¥æœåŠ¡å™¨...", true, true);
 					//login();
 					Intent intent = new Intent(LoginActivity.this,FunctionTabActivity.class);				
 					startActivity(intent);	
@@ -87,16 +87,16 @@ public class LoginActivity extends Activity{
 				}
 			});		 
 	 }
-	  //·½·¨£ºÁ¬½Ó·şÎñÆ÷½øĞĞµÇÂ¼
+	  //æ–¹æ³•ï¼šè¿æ¥æœåŠ¡å™¨è¿›è¡Œç™»å½•
 	    public void login(){
 	    	new Thread(){
 	    		public void run(){
 	    			Looper.prepare();
 					try{					
-						EditText etUid = (EditText)findViewById(R.id.etUid);	//»ñµÃÕÊºÅEditText
-						EditText etPwd = (EditText)findViewById(R.id.etPwd);	//»ñµÃÃÜÂëEditText
-						String uid = etUid.getEditableText().toString().trim();	//»ñµÃÊäÈëµÄÕÊºÅ
-						String pwd = etPwd.getEditableText().toString().trim();	//»ñµÃÊäÈëµÄÃÜÂë
+						EditText etUid = (EditText)findViewById(R.id.etUid);	//è·å¾—å¸å·EditText
+						EditText etPwd = (EditText)findViewById(R.id.etPwd);	//è·å¾—å¯†ç EditText
+						String uid = etUid.getEditableText().toString().trim();	//è·å¾—è¾“å…¥çš„å¸å·
+						String pwd = etPwd.getEditableText().toString().trim();	//è·å¾—è¾“å…¥çš„å¯†ç 
 						if(uid.equals("") || pwd.equals("")){	
 							 Message t=new Message();
 							 t.what=0;
@@ -114,19 +114,19 @@ public class LoginActivity extends Activity{
 						try
 						
 						{
-							//ÉèÖÃ×Ö·û¼¯
+							//è®¾ç½®å­—ç¬¦é›†
 							HttpEntity httpentity = new UrlEncodedFormEntity(params, "gb2312");
-							//ÇëÇóhttpRequest
+							//è¯·æ±‚httpRequest
 							httpRequest.setEntity(httpentity);
-							//È¡µÃÄ¬ÈÏµÄHttpClient
+							//å–å¾—é»˜è®¤çš„HttpClient
 							DefaultHttpClient httpclient = new DefaultHttpClient();
-							//È¡µÃHttpResponse
+							//å–å¾—HttpResponse
 							httpclient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 3000);
 							
 							httpclient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 3000);
 
 							HttpResponse httpResponse = httpclient.execute(httpRequest);
-							//HttpStatus.SC_OK±íÊ¾Á¬½Ó³É¹¦
+							//HttpStatus.SC_OKè¡¨ç¤ºè¿æ¥æˆåŠŸ
                             
 							if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
 							{
@@ -176,14 +176,14 @@ public class LoginActivity extends Activity{
 	    		}
 	    	}.start();
 	    }
-	    //·½·¨£º½«ÓÃ»§µÄidºÍÃÜÂë´æÈëPreferences
+	    //æ–¹æ³•ï¼šå°†ç”¨æˆ·çš„idå’Œå¯†ç å­˜å…¥Preferences
 	    public void rememberMe(String uid,String pwd){
-	    	SharedPreferences sp = getPreferences(MODE_PRIVATE);	//»ñµÃPreferences
-	    	SharedPreferences.Editor editor = sp.edit();			//»ñµÃEditor
-	    	editor.putString("uid", uid);							//½«ÓÃ»§Ãû´æÈëPreferences
+	    	SharedPreferences sp = getPreferences(MODE_PRIVATE);	//è·å¾—Preferences
+	    	SharedPreferences.Editor editor = sp.edit();			//è·å¾—Editor
+	    	editor.putString("uid", uid);							//å°†ç”¨æˆ·åå­˜å…¥Preferences
 	    	editor.putString("pwd", pwd);	
 	    	editor.putString("cookie",cookie.toString());
-	    	//½«ÃÜÂë´æÈëPreferences
+	    	//å°†å¯†ç å­˜å…¥Preferences
 	    	editor.commit();
 	        
 	    }

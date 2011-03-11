@@ -34,13 +34,13 @@ public class LoadingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         LinearLayout layout=(LinearLayout)findViewById(R.id.layout);
-      //±³¾°×Ô¶¯ÊÊÓ¦
+      //èƒŒæ™¯è‡ªåŠ¨é€‚åº”
         AndroidHelper.AutoBackground(this, layout, R.drawable.about_background_land, R.drawable.about_background_portriat);
         checkIfRemember();
     }
-  //·½·¨£º´ÓPreferencesÖĞ¶ÁÈ¡ÓÃ»§ÃûºÍÃÜÂë
+  //æ–¹æ³•ï¼šä»Preferencesä¸­è¯»å–ç”¨æˆ·åå’Œå¯†ç 
     public void checkIfRemember(){
-    	SharedPreferences sp = getPreferences(MODE_PRIVATE);	//»ñµÃPreferences
+    	SharedPreferences sp = getPreferences(MODE_PRIVATE);	//è·å¾—Preferences
     	String uid = sp.getString("uid", null);
     	String pwd = sp.getString("pwd", null);
     	if(uid != null && pwd!= null){
@@ -64,7 +64,7 @@ public class LoadingActivity extends Activity {
 			else if(msg.what==1){
 				Intent intent = new Intent(LoadingActivity.this,LoginActivity.class);
 				startActivity(intent);
-				displayToast("Çë¼ì²éÍøÂçÁ¬½Ó");
+				displayToast("è¯·æ£€æŸ¥ç½‘ç»œè¿æ¥");
 				finish();
 			}
 
@@ -87,18 +87,18 @@ public class LoadingActivity extends Activity {
 					try
 					
 					{
-						//ÉèÖÃ×Ö·û¼¯
+						//è®¾ç½®å­—ç¬¦é›†
 						HttpEntity httpentity = new UrlEncodedFormEntity(params, "gb2312");
-						//ÇëÇóhttpRequest
+						//è¯·æ±‚httpRequest
 						httpRequest.setEntity(httpentity);
-						//È¡µÃÄ¬ÈÏµÄHttpClient
+						//å–å¾—é»˜è®¤çš„HttpClient
 						DefaultHttpClient httpclient = new DefaultHttpClient();
 						httpclient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 3000);
 						
 						httpclient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 3000);
-						//È¡µÃHttpResponse
+						//å–å¾—HttpResponse
 						HttpResponse httpResponse = httpclient.execute(httpRequest);
-						//HttpStatus.SC_OK±íÊ¾Á¬½Ó³É¹¦
+						//HttpStatus.SC_OKè¡¨ç¤ºè¿æ¥æˆåŠŸ
 
 						if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
 						{
