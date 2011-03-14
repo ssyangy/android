@@ -19,29 +19,31 @@ public final class R {
         public static final int about_background_portriat=0x7f020001;
         public static final int back=0x7f020002;
         public static final int bg_splash=0x7f020003;
-        public static final int divide=0x7f020004;
-        public static final int exit=0x7f020005;
-        public static final int header=0x7f020006;
-        public static final int home_btn_bg_d=0x7f020007;
-        public static final int home_btn_bg_n=0x7f020008;
-        public static final int icon=0x7f020009;
-        public static final int icon_1_n=0x7f02000a;
-        public static final int icon_2_n=0x7f02000b;
-        public static final int icon_3_n=0x7f02000c;
-        public static final int icon_4_n=0x7f02000d;
-        public static final int icon_5_n=0x7f02000e;
-        public static final int line=0x7f02000f;
-        public static final int regist_weibo_n=0x7f020010;
-        public static final int regist_weibo_s=0x7f020011;
-        public static final int title_button_normal=0x7f020012;
-        public static final int title_button_selected=0x7f020013;
-        public static final int title_new_normal=0x7f020014;
-        public static final int title_new_selected=0x7f020015;
-        public static final int title_reload_normal=0x7f020016;
-        public static final int title_reload_selected=0x7f020017;
-        public static final int upbar=0x7f020018;
-        public static final int upbar0=0x7f020019;
-        public static final int ver=0x7f02001a;
+        public static final int default_head=0x7f020004;
+        public static final int divide=0x7f020005;
+        public static final int exit=0x7f020006;
+        public static final int header=0x7f020007;
+        public static final int home_btn_bg_d=0x7f020008;
+        public static final int home_btn_bg_n=0x7f020009;
+        public static final int icon=0x7f02000a;
+        public static final int icon_1_n=0x7f02000b;
+        public static final int icon_2_n=0x7f02000c;
+        public static final int icon_3_n=0x7f02000d;
+        public static final int icon_4_n=0x7f02000e;
+        public static final int icon_5_n=0x7f02000f;
+        public static final int images=0x7f020010;
+        public static final int line=0x7f020011;
+        public static final int regist_weibo_n=0x7f020012;
+        public static final int regist_weibo_s=0x7f020013;
+        public static final int title_button_normal=0x7f020014;
+        public static final int title_button_selected=0x7f020015;
+        public static final int title_new_normal=0x7f020016;
+        public static final int title_new_selected=0x7f020017;
+        public static final int title_reload_normal=0x7f020018;
+        public static final int title_reload_selected=0x7f020019;
+        public static final int upbar=0x7f02001a;
+        public static final int upbar0=0x7f02001b;
+        public static final int ver=0x7f02001c;
     }
     public static final class id {
         public static final int Msglist=0x7f07000b;
@@ -62,12 +64,18 @@ public final class R {
         public static final int more=0x7f070007;
         public static final int moreicon=0x7f070009;
         public static final int newblog=0x7f07000e;
-        public static final int newweibo=0x7f070017;
+        public static final int newweibo=0x7f070018;
         public static final int publishweibohead=0x7f070015;
         public static final int publishweiboreturn=0x7f070016;
+        public static final int publishweibosend=0x7f070017;
         public static final int search=0x7f070006;
         public static final int searchicon=0x7f070008;
         public static final int username=0x7f07000f;
+        public static final int wbicon=0x7f070019;
+        public static final int wbimage=0x7f07001b;
+        public static final int wbtext=0x7f07001d;
+        public static final int wbtime=0x7f07001c;
+        public static final int wbuser=0x7f07001a;
     }
     public static final class layout {
         public static final int foot=0x7f030000;
@@ -76,6 +84,7 @@ public final class R {
         public static final int login=0x7f030003;
         public static final int main=0x7f030004;
         public static final int publishweibo=0x7f030005;
+        public static final int weibo=0x7f030006;
     }
     public static final class string {
         public static final int app_name=0x7f050001;

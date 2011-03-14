@@ -18,6 +18,7 @@
         <activity android:name="com.q.weibo.FunctionTabActivity"></activity>
         <activity android:name="com.q.weibo.PublishWeiboActivity"></activity>
         <activity android:name="com.q.weibo.StartActivity"></activity>
+        <activity android:name="com.q.weibo.WeiboViewActivity"></activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-sdk android:minSdkVersion="7" />
