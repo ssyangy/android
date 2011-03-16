@@ -15,7 +15,6 @@ import org.apache.http.params.CoreConnectionPNames;
 import com.q.biz.store;
 import com.q.model.UserInfo;
 import com.q.store.DataHelper;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -27,7 +26,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 public class LoginActivity extends Activity{

@@ -14,8 +14,10 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreConnectionPNames;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -37,6 +39,7 @@ public class LoadingActivity extends Activity {
       //背景自动适应
         AndroidHelper.AutoBackground(this, layout, R.drawable.about_background_land, R.drawable.about_background_portriat);
         checkIfRemember();
+       
     }
   //方法：从Preferences中读取用户名和密码
     public void checkIfRemember(){
