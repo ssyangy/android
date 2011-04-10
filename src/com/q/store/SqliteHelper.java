@@ -22,7 +22,9 @@ public class SqliteHelper extends SQLiteOpenHelper{
                 UserInfo.TOKEN+" varchar,"+
                 UserInfo.TOKENSECRET+" varchar,"+
                 UserInfo.USERNAME+" varchar,"+
-                UserInfo.USERICON+" blob"+
+                UserInfo.USERICON+" blob,"+
+                UserInfo.LATITUDE+" varchar,"+
+                UserInfo.LONGITUDE+" varcher"+
                 ")"
                 );
         Log.e("Database","onCreate");

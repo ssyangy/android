@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="weiboMenu">		<!-- 声明一个字符串数组 -->
+     <item>相机拍摄</item>			<!-- 向数组中加入元素 -->
+     <item>手机相册</item>			<!-- 向数组中加入元素 -->
+     <item>加载地理信息</item>		<!-- 向数组中加入元素 -->
+  </string-array>
+    <string-array name="weiboMenu2">		<!-- 声明一个字符串数组 -->
+     <item>相机拍摄</item>			<!-- 向数组中加入元素 -->
+     <item>手机相册</item>			<!-- 向数组中加入元素 -->
+     <item>加载地理信息</item>
+     <item>清楚图片</item>		     <!-- 向数组中加入元素 -->
+  </string-array>
+</resources>

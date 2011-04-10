@@ -9,6 +9,8 @@ public class UserInfo {
 	public static final String TOKENSECRET="tokenSecret";
 	public static final String USERNAME="userName";
 	public static final String USERICON="userIcon";
+	public static final String LATITUDE="latitude";
+	public static final String LONGITUDE="longitude";
 
 	private String id;
 	private String userId;//”√ªßid
@@ -16,7 +18,25 @@ public class UserInfo {
 	private String password;
 	private String userName;
 	private Drawable userIcon;
+	private double latitude;
+	private double longitude;
+	
+	public double getLatitude() {
+		return latitude;
+	}
 
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	
 	public String getId(){
 	return id;
 	}

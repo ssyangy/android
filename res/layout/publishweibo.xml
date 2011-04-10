@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
-	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:orientation="vertical"
+	android:layout_height="fill_parent"  android:id="@+id/publishweibohead">
+	
+	<RelativeLayout 
 	    android:layout_width="fill_parent"
 		android:layout_height="45dip" 
-		 android:id="@+id/publishweibohead" >	
+		android:background="@drawable/header"
+		 android:layout_above="@+id/newweibo"
+		 android:layout_alignParentTop="true"
+		  >	
 		  <Button
 		    android:layout_marginLeft="5dip"
 		    android:layout_marginTop="5dip"
@@ -15,7 +19,7 @@
 			android:layout_height="wrap_content"
 			android:background="@drawable/title_button_normal"
 			android:layout_alignParentLeft="true"
-			android:text="返回"
+			android:text="插入"
 			/>
 		<TextView android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 
@@ -34,25 +38,72 @@
 			android:layout_height="wrap_content"
 			android:background="@drawable/title_button_normal"
 			  android:text="发送"  
-			/>
-		  
-	</RelativeLayout>
-	<EditText
+			/>		  
+	      </RelativeLayout>
+	
+	      <RelativeLayout  android:layout_width="fill_parent" 
+	       android:layout_height="fill_parent" android:orientation="vertical"
+	        >
+	    
+          <EditText
+	        android:hint="说点儿什么吧......"
 			android:id="@+id/newweibo"
 			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginLeft="10dip"
-			android:layout_marginRight="10dip"
-			android:layout_marginBottom="10dip"
-		    android:lines="10"
-		    android:maxLines="10"
-		    android:gravity="top"
-			/>	
-	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="horizontal" android:layout_width="fill_parent"
-	android:layout_height="wrap_content" android:layout_alignParentBottom="true"  >
-	<TableRow android:layout_width="fill_parent"
-	android:layout_height="wrap_content" >
-	</TableRow>
-    </TableLayout>
+			android:layout_height="fill_parent"
+			android:maxLength="20"
+			android:maxLines="20"
+			android:gravity="top"
+			android:layout_above="@+id/weiboInsert"
+			/>
+          
+              <LinearLayout
+        android:id="@+id/weiboInsert"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true">
+            <ImageView
+            android:id="@+id/weiboImg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left"
+            >
+            </ImageView>
+             <LinearLayout
+        android:id="@+id/loadingLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:layout_gravity="right">
+            <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="31px"
+            android:layout_height="31px"
+            android:layout_gravity="center"
+            style="@style/progressStyle">
+            </ProgressBar>
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在载入"
+            android:textSize="12px"
+            android:textColor="#9c9c9c"
+            android:layout_gravity="center"
+            android:layout_below="@+id/loading">
+            </TextView>
+        </LinearLayout>
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在载入"
+            android:textSize="12px"
+            android:visibility="invisible"
+            android:textColor="#9c9c9c"
+            android:layout_gravity="right"
+            >
+            </TextView>
+        </LinearLayout>
+         </RelativeLayout>
 </LinearLayout>

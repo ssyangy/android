@@ -11,5 +11,10 @@
     <string name="me">我的资料</string>
     <string name="search">搜索</string>
     <string name="more">更多</string>
-    
+    <string name="friendLocation">好友位置</string>
+    <string name="sendMessage">发消息</string>
+    <string name="newInformation">新鲜事</string>
+    <string name="newWeibo">发微博</string>
+    <string name="photo">照片</string>
+    <string name="set">设置</string>
 </resources>

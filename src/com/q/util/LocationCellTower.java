@@ -1,5 +1,10 @@
 package com.q.util;
+import java.util.ArrayList;
 import java.util.List;  
+
+import com.q.model.CellTowerInfo;
+import com.q.model.LocationInfo;
+
 import android.content.Context;  
 import android.telephony.CellLocation;
 import android.telephony.NeighboringCellInfo;
@@ -23,7 +28,7 @@ public class LocationCellTower  {
     #    * cdma电话方位： 
     #    *  
     #    */  
-    public CellLocation getCdmaCellLocation(){
+    public CdmaCellLocation getCdmaCellLocation(){
      return ((CdmaCellLocation)tm.getCellLocation());//CellLocation  
     }
     /* 
@@ -79,5 +84,35 @@ public class LocationCellTower  {
     	info.getCid();
     	info.getLac();
     	info.getNetworkType();
+    }
+    public ArrayList<CellTowerInfo> getNearGsm(){
+    	List<NeighboringCellInfo>temp=getNeighboringCellInfo();
+    	ArrayList<CellTowerInfo>data=new ArrayList<CellTowerInfo>();
+    	for(int i=0;i<temp.size();i++){
+    		NeighboringCellInfo info=temp.get(i);
+    		CellTowerInfo tempdata=new CellTowerInfo();
+    		tempdata.setCid(info.getCid());
+    		tempdata.setLac(info.getLac());
+    		tempdata.setSignal_strength(info.getRssi()*2-113);
+    		data.add(tempdata);
+    	}
+    	return data;
+    }
+    public ArrayList<CellTowerInfo>getNearCdma(){
+    	ArrayList<CellTowerInfo>data=new ArrayList<CellTowerInfo>();
+    	CdmaCellLocation temp=getCdmaCellLocation();
+    	CellTowerInfo info=new CellTowerInfo();
+    	info.setBid(temp.getBaseStationId());
+    	info.setNid(temp.getNetworkId());
+    	info.setSid(temp.getSystemId());
+    	data.add(info);
+    	return data;
+    }
+    public LocationInfo getCdmaLocation(){
+    	CdmaCellLocation tempcdma=getCdmaCellLocation();
+    	LocationInfo temp=new LocationInfo();
+    	temp.setLatitude(tempcdma.getBaseStationLatitude());
+    	temp.setLongitude(tempcdma.getBaseStationLongitude());
+    	return temp;
     }
 }

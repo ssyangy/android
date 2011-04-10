@@ -19,6 +19,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -69,9 +70,10 @@ public class LoginActivity extends Activity{
 			}
 		};
 	 public void onCreate(Bundle savedInstanceState) {
-
+		 this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		 super.onCreate(savedInstanceState);
 	        setContentView(R.layout.login);
+	        
 	        final Button btnLgn = (Button)findViewById(R.id.btnLogin);
 	        btnLgn.setOnClickListener(new View.OnClickListener() {
 				@Override

@@ -3,23 +3,33 @@
       package="com.q.weibo"
       android:versionCode="1"
       android:versionName="1.0">
-
-
-    <application android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+    <application android:icon="@drawable/icon" android:label="@string/app_name" 
+                  android:theme="@android:style/Theme.NoTitleBar">
+                  <uses-library android:name="com.google.android.maps" />
         <activity android:name=".LoadingActivity"
                   android:label="@string/app_name"
-                  >
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity android:name="com.q.weibo.LoginActivity"></activity>
-        <activity android:name="com.q.weibo.FunctionTabActivity"></activity>
-        <activity android:name="com.q.weibo.PublishWeiboActivity"></activity>
-        <activity android:name="com.q.weibo.StartActivity"></activity>
-        <activity android:name="com.q.weibo.WeiboViewActivity"></activity>
+        <activity android:name="com.q.weibo.LoginActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.q.weibo.FunctionTabActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.q.weibo.PublishWeiboActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.q.weibo.MessageActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.q.weibo.MoreActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.q.weibo.LocationActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.q.weibo.NewsActivity" android:screenOrientation="portrait"></activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
+     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission> 
+	<uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES"></uses-permission> 
+	<uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission> 
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission> 
+	<uses-permission android:name="android.permission.MODIFY_PHONE_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.CAMERA"/>
     <uses-sdk android:minSdkVersion="7" />
 </manifest>

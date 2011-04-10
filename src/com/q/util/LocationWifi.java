@@ -1,11 +1,15 @@
 package com.q.util;
+import java.util.ArrayList;
 import java.util.List;  
+import com.q.model.CellTowerInfo;
+import com.q.model.WifiTowerInfo;
 import android.content.Context;  
 import android.net.wifi.ScanResult;  
 import android.net.wifi.WifiConfiguration;  
 import android.net.wifi.WifiInfo;  
 import android.net.wifi.WifiManager;  
 import android.net.wifi.WifiManager.WifiLock;  
+import android.telephony.NeighboringCellInfo;
 public class LocationWifi {
 	  //定义WifiManager对象  
 	     private WifiManager mWifiManager;  
@@ -18,13 +22,34 @@ public class LocationWifi {
 	     //定义一个WifiLock  
 	     WifiLock mWifiLock;  
 	     //构造器  
+	     public boolean isWifiOn(){
+	    	 if(mWifiList==null){
+	    		 return false;
+	    	 }
+	    	 return true;
+	     }
 	     public  LocationWifi(Context context)  
 	     {  
 	         //取得WifiManager对象  
 	         mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);  
 	         //取得WifiInfo对象  
 	         mWifiInfo = mWifiManager.getConnectionInfo();  
-	     }  
+	         StartScan();
+	        
+	     }
+	     public  ArrayList<WifiTowerInfo> getNearWifi(){
+	    	ArrayList<WifiTowerInfo>temp=new ArrayList<WifiTowerInfo>();
+	    	 for(int i=0;i<mWifiList.size();i++){
+	        	 ScanResult now=mWifiList.get(i);
+	        	 WifiTowerInfo wifi=new WifiTowerInfo();
+	        	 wifi.setMac(now.BSSID);
+	        	 wifi.setSignal_strength(now.level);
+	        	 wifi.setName(now.SSID);	
+	        	 temp.add(wifi);
+	         }
+	    	 return temp;
+	     }
+
 	     //打开WIFI  
 	     public void OpenWifi()  
 	     {  
@@ -128,6 +153,7 @@ public class LocationWifi {
 	     public String GetWifiInfo()  
 	     {  
 	         return (mWifiInfo == null) ? "NULL" : mWifiInfo.toString();  
+	         
 	     }  
 	     //添加一个网络并连接  
 	     public void AddNetwork(WifiConfiguration wcg)  
