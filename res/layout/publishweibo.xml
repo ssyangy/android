@@ -56,18 +56,20 @@
 			android:layout_above="@+id/weiboInsert"
 			/>
           
-              <LinearLayout
+              <RelativeLayout
         android:id="@+id/weiboInsert"
         android:layout_width="fill_parent"
         android:layout_height="50dip"
         android:orientation="horizontal"
+        android:background="@drawable/header"
         android:visibility="gone"
         android:layout_alignParentBottom="true">
             <ImageView
             android:id="@+id/weiboImg"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="left"
+            android:layout_width="50dip"
+            android:layout_height="40dip"  
+            android:layout_alignParentLeft="true"    
+            android:src="@drawable/app_icon"     
             >
             </ImageView>
              <LinearLayout
@@ -76,11 +78,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="invisible"
-        android:layout_gravity="right">
+         android:layout_alignParentRight="true"
+         android:layout_marginTop="5dip"
+          android:layout_marginRight="20dip"
+        >
             <ProgressBar
             android:id="@+id/loading"
-            android:layout_width="31px"
-            android:layout_height="31px"
+            android:layout_width="31dip"
+            android:layout_height="31dip"
             android:layout_gravity="center"
             style="@style/progressStyle">
             </ProgressBar>
@@ -94,16 +99,7 @@
             android:layout_below="@+id/loading">
             </TextView>
         </LinearLayout>
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="正在载入"
-            android:textSize="12px"
-            android:visibility="invisible"
-            android:textColor="#9c9c9c"
-            android:layout_gravity="right"
-            >
-            </TextView>
-        </LinearLayout>
+
+        </RelativeLayout>
          </RelativeLayout>
 </LinearLayout>

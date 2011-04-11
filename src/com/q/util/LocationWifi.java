@@ -39,7 +39,7 @@ public class LocationWifi {
 	     }
 	     public  ArrayList<WifiTowerInfo> getNearWifi(){
 	    	ArrayList<WifiTowerInfo>temp=new ArrayList<WifiTowerInfo>();
-	    	 for(int i=0;i<mWifiList.size();i++){
+                 for(int i=0;i<mWifiList.size();i++){
 	        	 ScanResult now=mWifiList.get(i);
 	        	 WifiTowerInfo wifi=new WifiTowerInfo();
 	        	 wifi.setMac(now.BSSID);

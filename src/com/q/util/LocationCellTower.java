@@ -88,7 +88,21 @@ public class LocationCellTower  {
     public ArrayList<CellTowerInfo> getNearGsm(){
     	List<NeighboringCellInfo>temp=getNeighboringCellInfo();
     	ArrayList<CellTowerInfo>data=new ArrayList<CellTowerInfo>();
+    	int max=-300;
+    	int maxNum=-1;
     	for(int i=0;i<temp.size();i++){
+    		NeighboringCellInfo info=temp.get(i);
+                int value= info.getRssi()*2-113;
+                if(value>max){
+                	maxNum=i;               	
+                }
+    	}
+    	if(maxNum!=-1&&maxNum!=0){
+    		NeighboringCellInfo tempValue=temp.get(0);
+    		temp.set(0, temp.get(maxNum));
+    		temp.set(maxNum, tempValue);
+    	}
+	    for(int i=0;i<temp.size();i++){
     		NeighboringCellInfo info=temp.get(i);
     		CellTowerInfo tempdata=new CellTowerInfo();
     		tempdata.setCid(info.getCid());

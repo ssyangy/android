@@ -18,6 +18,12 @@ public final class R {
         /**  向数组中加入元素 
          */
         public static final int weiboMenu2=0x7f050001;
+        /**  向数组中加入元素 
+         */
+        public static final int weiboMenu3=0x7f050002;
+        /**  向数组中加入元素 
+         */
+        public static final int weiboMenu4=0x7f050003;
     }
     public static final class attr {
     }

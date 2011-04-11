@@ -7,13 +7,7 @@ import com.q.model.UserInfo;
 public class store {
 	static CookieStore cookies;
 	static UserInfo currentuser;
-	static boolean imgExist;
-	public static boolean isImgExist() {
-		return imgExist;
-	}
-	public static void setImgExist(boolean imgExist) {
-		store.imgExist = imgExist;
-	}
+
 	public static CookieStore getCookieStore(){
 	return cookies;
 	}

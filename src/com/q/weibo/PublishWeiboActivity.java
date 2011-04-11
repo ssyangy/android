@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 import com.q.biz.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.HttpEntity;
@@ -44,6 +45,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 public class PublishWeiboActivity extends Activity {
 	   public static final String MIME_TYPE_IMAGE_JPEG = "image/jpeg"; 
@@ -55,10 +57,29 @@ public class PublishWeiboActivity extends Activity {
 	    public static final String KEY_FILE_URL = "url"; 
 	 
 	    private byte[] mContent;
+	    
+	    final int LIST_DIALOG_Null = 1;			//声明列表对话框的id
+	    final int LIST_DIALOG_Img = 2;			//声明列表对话框的id
+	    final int LIST_DIALOG_Loc = 3;			//声明列表对话框的id
+	    final int LIST_DIALOG_All = 4;			//声明列表对话框的id
 	ProgressDialog pd;
 	String userId= null;
 	private String tempImgPath=null;
-	final int LIST_DIALOG = 2;			//声明列表对话框的id
+	
+	private boolean imgExist=false;
+	private boolean locationExist=false;
+	public boolean isLocationExist() {
+		return locationExist;
+	}
+	public void setLocationExist(boolean locationExist) {
+		this.locationExist = locationExist;
+	}
+	public  boolean isImgExist() {
+		return imgExist;
+	}
+	public  void setImgExist(boolean imgExist) {
+		this.imgExist = imgExist;
+	}
 	private Handler handler=new Handler(){
 		@Override
 		public void handleMessage(Message msg){
@@ -109,11 +130,17 @@ public class PublishWeiboActivity extends Activity {
 				//startActivityForResult(it, Activity.DEFAULT_KEYS_DIALER);
 	
 				//	showDialog(LIST_DIALOG);			//显示列表对话框
-					if(store.isImgExist()==true){
-						showDialog(3);
+					if(isImgExist()==true&&isLocationExist()==false){
+						showDialog(LIST_DIALOG_Img);
+					}
+					else if(isImgExist()==false&&isLocationExist()==true){
+						showDialog(LIST_DIALOG_Loc);
+					}
+					else if(isImgExist()==true&&isLocationExist()==true){
+						showDialog(LIST_DIALOG_All);
 					}
 					else{
-						showDialog(LIST_DIALOG);			//显示列表对话框
+						showDialog(LIST_DIALOG_Null);			//显示列表对话框
 					}
 
 			}
@@ -135,12 +162,12 @@ public class PublishWeiboActivity extends Activity {
 		Dialog dialog = null;
 	
 		switch(id){		
-		case LIST_DIALOG:
+		case LIST_DIALOG_Null:
 			Builder b = new AlertDialog.Builder(this);		//创建Builder对象
 			b.setIcon(R.drawable.set);					//设置图标
 			b.setTitle(R.string.set);	
 			//设置标题
-			displayToast(String.valueOf(store.isImgExist()));
+		
 			b.setItems(										//设置列表中的各个属性
 					R.array.weiboMenu, 							//字符串数组
 					new DialogInterface.OnClickListener() {	//为列表设置OnClickListener监听器
@@ -159,24 +186,24 @@ public class PublishWeiboActivity extends Activity {
 							        startActivityForResult(getImage, ACTIVITY_GET_IMAGE); 
 							}
 							else if(which==2){
-								
+								RelativeLayout layout2=(RelativeLayout)findViewById(R.id.weiboInsert);
+		                         layout2.setVisibility(View.VISIBLE);
+								LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
+		                         layout.setVisibility(View.VISIBLE);
 							}
 					
 						}
 					});
 			dialog=b.create();		
 			//生成Dialog对象
-		
-			
-			
 			break;
 			
-		case 3:
+		case LIST_DIALOG_Img:
 			Builder bs = new AlertDialog.Builder(this);		//创建Builder对象
 			bs.setIcon(R.drawable.set);					//设置图标
 			bs.setTitle(R.string.set);	
 			//设置标题
-			displayToast(String.valueOf(store.isImgExist()));
+			
 			bs.setItems(										//设置列表中的各个属性
 					R.array.weiboMenu2, 							//字符串数组
 					new DialogInterface.OnClickListener() {	//为列表设置OnClickListener监听器
@@ -195,18 +222,106 @@ public class PublishWeiboActivity extends Activity {
 							        startActivityForResult(getImage, ACTIVITY_GET_IMAGE); 
 							}
 							else if(which==2){
-								
+								RelativeLayout layout2=(RelativeLayout)findViewById(R.id.weiboInsert);
+	                         layout2.setVisibility(View.VISIBLE);
+							LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
+	                         layout.setVisibility(View.VISIBLE);
 							}
-                          else if(which==3){
-                        	  LinearLayout layout=(LinearLayout)findViewById(R.id.weiboInsert);
+                            else if(which==3){
+                              RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
                               layout.setVisibility(View.GONE);
-                 
-                              store.setImgExist(false);
+                              
+                              setImgExist(false);
 							}
 						}
 					});
 			dialog=bs.create();
 			break;		
+		case LIST_DIALOG_Loc:
+			Builder bss = new AlertDialog.Builder(this);		//创建Builder对象
+			bss.setIcon(R.drawable.set);					//设置图标
+			bss.setTitle(R.string.set);	
+			//设置标题
+			
+			bss.setItems(										//设置列表中的各个属性
+					R.array.weiboMenu3, 							//字符串数组
+					new DialogInterface.OnClickListener() {	//为列表设置OnClickListener监听器
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							if(which==0){
+								Intent it = new Intent("android.media.action.IMAGE_CAPTURE");
+								startActivityForResult(it, Activity.DEFAULT_KEYS_DIALER);
+							}
+							else if(which==1){
+								//final Intent intent=getPhotoPickIntent();
+								//startActivityForResult(intent,3021 );
+								 Intent getImage = new Intent(Intent.ACTION_GET_CONTENT); 
+							        getImage.addCategory(Intent.CATEGORY_OPENABLE); 
+							        getImage.setType(MIME_TYPE_IMAGE_JPEG); 
+							        startActivityForResult(getImage, ACTIVITY_GET_IMAGE); 
+							}
+							else if(which==2){
+								RelativeLayout layout2=(RelativeLayout)findViewById(R.id.weiboInsert);
+	                         layout2.setVisibility(View.VISIBLE);
+							LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
+	                         layout.setVisibility(View.VISIBLE);
+							}
+                            else if(which==3){
+                              RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
+                              layout.setVisibility(View.GONE);
+                              
+                              setImgExist(false);
+							}
+						}
+					});
+			dialog=bss.create();
+			break;	
+		case LIST_DIALOG_All:
+			Builder bse = new AlertDialog.Builder(this);		//创建Builder对象
+			bse.setIcon(R.drawable.set);					//设置图标
+			bse.setTitle(R.string.set);	
+			//设置标题
+			
+			bse.setItems(										//设置列表中的各个属性
+					R.array.weiboMenu2, 							//字符串数组
+					new DialogInterface.OnClickListener() {	//为列表设置OnClickListener监听器
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							if(which==0){
+								Intent it = new Intent("android.media.action.IMAGE_CAPTURE");
+								startActivityForResult(it, Activity.DEFAULT_KEYS_DIALER);
+							}
+							else if(which==1){
+								//final Intent intent=getPhotoPickIntent();
+								//startActivityForResult(intent,3021 );
+								 Intent getImage = new Intent(Intent.ACTION_GET_CONTENT); 
+							        getImage.addCategory(Intent.CATEGORY_OPENABLE); 
+							        getImage.setType(MIME_TYPE_IMAGE_JPEG); 
+							        startActivityForResult(getImage, ACTIVITY_GET_IMAGE); 
+							}
+							else if(which==2){
+								RelativeLayout layout2=(RelativeLayout)findViewById(R.id.weiboInsert);
+	                         layout2.setVisibility(View.VISIBLE);
+							LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
+	                         layout.setVisibility(View.VISIBLE);
+							}
+                            else if(which==3){
+                              RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
+                              layout.setVisibility(View.GONE);
+                              
+                              setImgExist(false);
+							}
+                            else if(which==4){
+                                RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
+                                layout.setVisibility(View.GONE);
+                                
+                                setImgExist(false);
+  							}
+						}
+					});
+			dialog=bse.create();
+			break;		
+		
 		default:
 			break;			
 		}
@@ -363,11 +478,12 @@ public class PublishWeiboActivity extends Activity {
                          .parse(originalUri.toString())), 3500000); 
                  //将字节数组转换为ImageView可调用的Bitmap对象 
                  bm = getPicFromBytes(mContent, null); 
-                 LinearLayout layout=(LinearLayout)findViewById(R.id.weiboInsert);
+                 RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
                  layout.setVisibility(View.VISIBLE);
                  ImageView iv=(ImageView)findViewById(R.id.weiboImg);
-                 iv.setImageBitmap(bm);
-                 store.setImgExist(true);
+                 Bitmap  bitmap2 = Bitmap.createScaledBitmap(bm, 50, 40, true);
+                 iv.setImageBitmap(bitmap2);
+                 setImgExist(true);
                  displayToast(bm.getHeight()+" "+bm.getWidth());
              } catch (IOException e) { 
                  System.out.println(e.getMessage()); 
@@ -381,11 +497,12 @@ public class PublishWeiboActivity extends Activity {
             // take = b;
             // ImageView img = (ImageView)findViewById(R.id.image);
             // img.setImageBitmap(take);
-             LinearLayout layout=(LinearLayout)findViewById(R.id.weiboInsert);
+             RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
              layout.setVisibility(View.VISIBLE);
              ImageView iv=(ImageView)findViewById(R.id.weiboImg);
-             iv.setImageBitmap(b);
-             store.setImgExist(true);
+             Bitmap  bitmap2 = Bitmap.createScaledBitmap(b, 50, 40, true);
+             iv.setImageBitmap(bitmap2);
+             setImgExist(true);
              displayToast(b.getHeight()+" "+b.getWidth());
          }catch(Exception e){
          }

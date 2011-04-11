@@ -29,6 +29,7 @@ public class Location {
 	Handler handler;
 	Context context;
 	LocationGps gps;
+	LocationNetwork network;
 	private Handler gpsHandler=new Handler(){
 		@Override
 		public void handleMessage(Message msg){
@@ -66,7 +67,7 @@ public class Location {
 	
    }
    public void displayToast(String str){
-	  	Toast.makeText(context,str,Toast.LENGTH_SHORT).show();	  
+	  	Toast.makeText(context,str,Toast.LENGTH_LONG).show();	  
    }
    
    
@@ -189,6 +190,7 @@ public class Location {
 			 return object;
 		   }  
    }
+
    public JSONObject getGsmCell(ArrayList<CellTowerInfo> data){
 	     JSONObject object=new JSONObject();
 	     JSONArray cells=new JSONArray();
@@ -293,7 +295,7 @@ public class Location {
 	}
   }.start();
 }
-
+  
    public boolean analysisData(JSONObject object){	  
 	   try {
 		JSONObject inner=object.getJSONObject("location");
@@ -353,6 +355,8 @@ public class Location {
      //若前面的方法都无法使用,最后采取wifi mac,return null
    public LocationInfo getLocation(){
 	   gps=new LocationGps(context,gpsHandler);
+	   network=new LocationNetwork(context,gpsHandler);//fix me
+	   network.getLocation();
 	   gps.startGetData(context);
 	   LocationInfo temp=new LocationInfo();
 	   LocationWifi wifi=new LocationWifi(context);
@@ -366,7 +370,8 @@ public class Location {
 				   return null;
 			   }
 			   postDate(getGsmCell(l2.getNearGsm()));
-			   return null;
+			  return null;
+		
 		   }
 		   else if(l2.getNetworkType()==4){
 			   if(wifi.isWifiOn()){					  
