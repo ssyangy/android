@@ -101,6 +101,7 @@ public final class R {
         public static final int loading=0x7f090013;
         public static final int loadingLayout=0x7f090012;
         public static final int location=0x7f090000;
+        public static final int locationInfo=0x7f090014;
         public static final int locationhead=0x7f090001;
         public static final int locationrefresh=0x7f090002;
         public static final int map_bubbleText=0x7f09000b;
@@ -111,11 +112,11 @@ public final class R {
         public static final int publishweiboreturn=0x7f09000e;
         public static final int publishweibosend=0x7f09000f;
         public static final int updatelocation=0x7f090003;
-        public static final int wbicon=0x7f090014;
-        public static final int wbimage=0x7f090016;
-        public static final int wbtext=0x7f090018;
-        public static final int wbtime=0x7f090017;
-        public static final int wbuser=0x7f090015;
+        public static final int wbicon=0x7f090015;
+        public static final int wbimage=0x7f090017;
+        public static final int wbtext=0x7f090019;
+        public static final int wbtime=0x7f090018;
+        public static final int wbuser=0x7f090016;
         public static final int weiboImg=0x7f090011;
         public static final int weiboInsert=0x7f090010;
     }

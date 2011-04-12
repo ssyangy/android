@@ -69,7 +69,9 @@
             android:layout_width="50dip"
             android:layout_height="40dip"  
             android:layout_alignParentLeft="true"    
-            android:src="@drawable/app_icon"     
+            android:src="@drawable/app_icon"    
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="5dip" 
             >
             </ImageView>
              <LinearLayout
@@ -92,14 +94,22 @@
             <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="正在载入"
+            android:text="正在载入地理位置信息"
             android:textSize="12px"
             android:textColor="#9c9c9c"
             android:layout_gravity="center"
             android:layout_below="@+id/loading">
             </TextView>
         </LinearLayout>
-
+             <TextView android:id="@+id/locationInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+         android:layout_alignParentRight="true"
+         android:layout_marginTop="5dip"
+          android:layout_marginRight="20dip">
+        
+             </TextView>
         </RelativeLayout>
          </RelativeLayout>
 </LinearLayout>

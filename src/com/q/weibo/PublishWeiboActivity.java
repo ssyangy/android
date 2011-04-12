@@ -46,6 +46,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 public class PublishWeiboActivity extends Activity {
 	   public static final String MIME_TYPE_IMAGE_JPEG = "image/jpeg"; 
@@ -181,15 +182,16 @@ public class PublishWeiboActivity extends Activity {
 								//final Intent intent=getPhotoPickIntent();
 								//startActivityForResult(intent,3021 );
 								 Intent getImage = new Intent(Intent.ACTION_GET_CONTENT); 
-							        getImage.addCategory(Intent.CATEGORY_OPENABLE); 
-							        getImage.setType(MIME_TYPE_IMAGE_JPEG); 
-							        startActivityForResult(getImage, ACTIVITY_GET_IMAGE); 
+							     getImage.addCategory(Intent.CATEGORY_OPENABLE); 
+							     getImage.setType(MIME_TYPE_IMAGE_JPEG); 
+							     startActivityForResult(getImage, ACTIVITY_GET_IMAGE); 
 							}
 							else if(which==2){
 								RelativeLayout layout2=(RelativeLayout)findViewById(R.id.weiboInsert);
-		                         layout2.setVisibility(View.VISIBLE);
+		                        layout2.setVisibility(View.VISIBLE);
 								LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
-		                         layout.setVisibility(View.VISIBLE);
+		                        layout.setVisibility(View.VISIBLE);
+		                        setLocationExist(true);
 							}
 					
 						}
@@ -217,20 +219,22 @@ public class PublishWeiboActivity extends Activity {
 								//final Intent intent=getPhotoPickIntent();
 								//startActivityForResult(intent,3021 );
 								 Intent getImage = new Intent(Intent.ACTION_GET_CONTENT); 
-							        getImage.addCategory(Intent.CATEGORY_OPENABLE); 
-							        getImage.setType(MIME_TYPE_IMAGE_JPEG); 
-							        startActivityForResult(getImage, ACTIVITY_GET_IMAGE); 
+							      getImage.addCategory(Intent.CATEGORY_OPENABLE); 
+							      getImage.setType(MIME_TYPE_IMAGE_JPEG); 
+							      startActivityForResult(getImage, ACTIVITY_GET_IMAGE); 
 							}
 							else if(which==2){
-								RelativeLayout layout2=(RelativeLayout)findViewById(R.id.weiboInsert);
-	                         layout2.setVisibility(View.VISIBLE);
-							LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
-	                         layout.setVisibility(View.VISIBLE);
+							   RelativeLayout layout2=(RelativeLayout)findViewById(R.id.weiboInsert);
+	                           layout2.setVisibility(View.VISIBLE);
+							   LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
+	                           layout.setVisibility(View.VISIBLE);
+	                           setLocationExist(true);
 							}
                             else if(which==3){
                               RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
-                              layout.setVisibility(View.GONE);
-                              
+                              layout.setVisibility(View.GONE);   
+                              ImageView imageview=(ImageView)findViewById(R.id.weiboImg);
+                              imageview.setVisibility(View.GONE);
                               setImgExist(false);
 							}
 						}
@@ -241,8 +245,7 @@ public class PublishWeiboActivity extends Activity {
 			Builder bss = new AlertDialog.Builder(this);		//创建Builder对象
 			bss.setIcon(R.drawable.set);					//设置图标
 			bss.setTitle(R.string.set);	
-			//设置标题
-			
+			//设置标题			
 			bss.setItems(										//设置列表中的各个属性
 					R.array.weiboMenu3, 							//字符串数组
 					new DialogInterface.OnClickListener() {	//为列表设置OnClickListener监听器
@@ -261,16 +264,21 @@ public class PublishWeiboActivity extends Activity {
 							        startActivityForResult(getImage, ACTIVITY_GET_IMAGE); 
 							}
 							else if(which==2){
-								RelativeLayout layout2=(RelativeLayout)findViewById(R.id.weiboInsert);
+							 RelativeLayout layout2=(RelativeLayout)findViewById(R.id.weiboInsert);
 	                         layout2.setVisibility(View.VISIBLE);
-							LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
+							 LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
 	                         layout.setVisibility(View.VISIBLE);
+	                         setLocationExist(true);
 							}
                             else if(which==3){
-                              RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
-                              layout.setVisibility(View.GONE);
-                              
-                              setImgExist(false);
+                         
+                          	LinearLayout layout1=(LinearLayout)findViewById(R.id.loadingLayout);
+	                         layout1.setVisibility(View.GONE);
+	                     	 TextView layout2=(TextView)findViewById(R.id.locationInfo);
+	                         layout2.setVisibility(View.GONE);
+	                         RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
+                             layout.setVisibility(View.GONE);
+	                         setLocationExist(false);
 							}
 						}
 					});
@@ -283,7 +291,7 @@ public class PublishWeiboActivity extends Activity {
 			//设置标题
 			
 			bse.setItems(										//设置列表中的各个属性
-					R.array.weiboMenu2, 							//字符串数组
+					R.array.weiboMenu4, 							//字符串数组
 					new DialogInterface.OnClickListener() {	//为列表设置OnClickListener监听器
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
@@ -304,18 +312,22 @@ public class PublishWeiboActivity extends Activity {
 	                         layout2.setVisibility(View.VISIBLE);
 							LinearLayout layout=(LinearLayout)findViewById(R.id.loadingLayout);
 	                         layout.setVisibility(View.VISIBLE);
+	                         setLocationExist(true);
 							}
                             else if(which==3){
-                              RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
-                              layout.setVisibility(View.GONE);
-                              
+
+                              ImageView imageview=(ImageView)findViewById(R.id.weiboImg);
+                              imageview.setVisibility(View.GONE);
                               setImgExist(false);
 							}
                             else if(which==4){
-                                RelativeLayout layout=(RelativeLayout)findViewById(R.id.weiboInsert);
-                                layout.setVisibility(View.GONE);
-                                
-                                setImgExist(false);
+
+                            	LinearLayout layout1=(LinearLayout)findViewById(R.id.loadingLayout);
+   	                         layout1.setVisibility(View.GONE);
+   	                      TextView layout2=(TextView)findViewById(R.id.locationInfo);
+   	                         layout2.setVisibility(View.GONE);
+   	                        setLocationExist(false);
+                            
   							}
 						}
 					});
@@ -482,6 +494,7 @@ public class PublishWeiboActivity extends Activity {
                  layout.setVisibility(View.VISIBLE);
                  ImageView iv=(ImageView)findViewById(R.id.weiboImg);
                  Bitmap  bitmap2 = Bitmap.createScaledBitmap(bm, 50, 40, true);
+                 iv.setVisibility(View.VISIBLE);
                  iv.setImageBitmap(bitmap2);
                  setImgExist(true);
                  displayToast(bm.getHeight()+" "+bm.getWidth());
@@ -502,6 +515,7 @@ public class PublishWeiboActivity extends Activity {
              ImageView iv=(ImageView)findViewById(R.id.weiboImg);
              Bitmap  bitmap2 = Bitmap.createScaledBitmap(b, 50, 40, true);
              iv.setImageBitmap(bitmap2);
+             iv.setVisibility(View.VISIBLE);
              setImgExist(true);
              displayToast(b.getHeight()+" "+b.getWidth());
          }catch(Exception e){
